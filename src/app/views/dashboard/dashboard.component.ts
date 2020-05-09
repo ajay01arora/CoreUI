@@ -1,11 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
+import { DashboardService } from '../../services/dashboard/dashboard.service';
 
+import {STATE_CODES_REVERSE} from '../../../utils/constants.js';
+import {
+  formatDate,
+  formatDateAbsolute,
+  mergeTimeseries,
+  preprocessTimeseries,
+  parseStateTimeseries,
+  parseStateTestTimeseries,
+  parseTotalTestTimeseries,
+  parseDistrictZones,
+  //  isDevelopmentOrTest,
+} from '../../../utils/commonFunction.js';
 @Component({
   templateUrl: 'dashboard.component.html'
 })
 export class DashboardComponent implements OnInit {
+  constructor(private dashboardService : DashboardService){}
+
 
   radioModel: string = 'Month';
 
@@ -376,6 +391,15 @@ export class DashboardComponent implements OnInit {
   public random(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
+  casesTimeSeries:any=[];
+  statewise:any=[];
+
+  tested:any=[];
+  allData:any=[]
+  states:any=[]
+  stateDistrictWiseData:any=[]
+  districtZones:any=[]
+
 
   ngOnInit(): void {
     // generate random values for mainChart
@@ -384,5 +408,35 @@ export class DashboardComponent implements OnInit {
       this.mainChartData2.push(this.random(80, 100));
       this.mainChartData3.push(65);
     }
+    this.getAllData()
+    this.getDistrictWiseData()
+    this.getDistrictZones()
   }
+
+
+  async getAllData(){
+this.allData=await   this.dashboardService.getAllData()
+console.log(this.allData)
+// let { cases_time_series , statewise , tested }=data;
+this.casesTimeSeries=this.allData.cases_time_series;
+this.statewise=this.allData.statewise;
+this.states=this.statewise;
+this.tested=this.allData.tested
+  }
+  
+  async getDistrictWiseData(){
+    this.stateDistrictWiseData=await   this.dashboardService.getDistrictWiseData()
+
+
+  }
+
+
+  async getDistrictZones(){
+    this.districtZones=await this.dashboardService.getDistrictZones()
+  }
+
+
+
+
+
 }

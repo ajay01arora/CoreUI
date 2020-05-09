@@ -6,15 +6,20 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
+// import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { TableComponent } from '../../components/table/table.component';
 
 @NgModule({
   imports: [
     FormsModule,
+    // BrowserModule,
+    CommonModule,
     DashboardRoutingModule,
     ChartsModule,
     BsDropdownModule,
     ButtonsModule.forRoot()
   ],
-  declarations: [ DashboardComponent ]
+  declarations: [ DashboardComponent ,TableComponent]
 })
 export class DashboardModule { }

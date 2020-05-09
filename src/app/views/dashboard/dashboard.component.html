@@ -6,8 +6,10 @@
           <button type="button" class="btn btn-transparent p-0 float-right">
             <i class="icon-location-pin"></i>
           </button>
-          <div class="text-value">9.823</div>
-          <div>Members online</div>
+          <div class="text-value" *ngIf="statewise.length>0" >
+              {{statewise[0].confirmed}}
+          </div>
+          <div>Confirmed</div>
         </div>
         <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
           <canvas baseChart class="chart"
@@ -19,7 +21,7 @@
           [chartType]="lineChart2Type"></canvas>
         </div>
       </div>
-    </div><!--/.col-->
+    </div>
     <div class="col-sm-6 col-lg-3">
       <div class="card text-white bg-primary">
         <div class="card-body pb-0">
@@ -34,8 +36,11 @@
               <a class="dropdown-item" href="#">Something else here</a>
             </div>
           </div>
-          <div class="text-value">9.823</div>
-          <div>Members online</div>
+          <div class="text-value" *ngIf="statewise.length>0"  >
+              {{statewise[0].active}}
+            <!-- 9.823 -->
+          </div>
+          <div>Active</div>
         </div>
         <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
           <canvas baseChart class="chart"
@@ -49,7 +54,7 @@
       </div>
     </div><!--/.col-->
     <div class="col-sm-6 col-lg-3">
-      <div class="card text-white bg-warning">
+      <div class="card text-white bg-success">
         <div class="card-body pb-0">
           <div class="btn-group float-right" dropdown>
             <button type="button" class="btn btn-transparent dropdown-toggle p-0" dropdownToggle>
@@ -61,8 +66,11 @@
               <a class="dropdown-item" href="#">Something else here</a>
             </div>
           </div>
-          <div class="text-value">9.823</div>
-          <div>Members online</div>
+          <div class="text-value" *ngIf="statewise.length>0">
+
+            {{statewise[0].recovered}}
+          </div>
+          <div>Recovered</div>
         </div>
         <div class="chart-wrapper mt-3" style="height:70px;">
           <canvas baseChart class="chart"
@@ -88,8 +96,10 @@
               <a class="dropdown-item" href="#">Something else here</a>
             </div>
           </div>
-          <div class="text-value">9.823</div>
-          <div>Members online</div>
+          <div class="text-value" *ngIf="statewise.length>0">
+            {{statewise[0].deaths}}
+          </div>
+          <div>Deceased</div>
         </div>
         <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
           <canvas baseChart class="chart"
@@ -101,76 +111,66 @@
           [chartType]="barChart1Type"></canvas>
         </div>
       </div>
-    </div><!--/.col-->
-  </div><!--/.row-->
-  <div class="card">
-    <div class="card-body">
-      <div class="row">
-        <div class="col-sm-5">
-          <h4 class="card-title mb-0">Traffic</h4>
-          <div class="small text-muted">November 2017</div>
-        </div><!--/.col-->
-        <div class="col-sm-7 d-none d-md-block">
-          <button type="button" class="btn btn-primary float-right"><i class="icon-cloud-download"></i></button>
-          <div class="btn-group btn-group-toggle float-right mr-3" data-toggle="buttons">
-            <label class="btn btn-outline-secondary" [(ngModel)]="radioModel" btnRadio="Day" id="option1">Day</label>
-            <label class="btn btn-outline-secondary" [(ngModel)]="radioModel" btnRadio="Month" id="option2">Month</label>
-            <label class="btn btn-outline-secondary" [(ngModel)]="radioModel" btnRadio="Year" id="option3">Year</label>
-          </div>
-        </div><!--/.col-->
-      </div><!--/.row-->
-      <div class="chart-wrapper" style="height:300px;margin-top:40px;">
-        <canvas baseChart class="chart"
-        [datasets]="mainChartData"
-        [labels]="mainChartLabels"
-        [options]="mainChartOptions"
-        [colors]="mainChartColours"
-        [legend]="mainChartLegend"
-        [chartType]="mainChartType"></canvas>
-      </div>
-    </div>
-    <div class="card-footer">
-      <div class="row text-center">
-        <div class="col-sm-12 col-md mb-sm-2 mb-0">
-          <div class="text-muted">Visits</div>
-          <strong>29.703 Users (40%)</strong>
-          <div class="progress progress-xs mt-2">
-            <div class="progress-bar bg-success" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div>
-        <div class="col-sm-12 col-md mb-sm-2 mb-0">
-          <div class="text-muted">Unique</div>
-          <strong>24.093 Users (20%)</strong>
-          <div class="progress progress-xs mt-2">
-            <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div>
-        <div class="col-sm-12 col-md mb-sm-2 mb-0">
-          <div class="text-muted">Pageviews</div>
-          <strong>78.706 Views (60%)</strong>
-          <div class="progress progress-xs mt-2">
-            <div class="progress-bar bg-warning" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div>
-        <div class="col-sm-12 col-md mb-sm-2 mb-0">
-          <div class="text-muted">New Users</div>
-          <strong>22.123 Users (80%)</strong>
-          <div class="progress progress-xs mt-2">
-            <div class="progress-bar bg-danger" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div>
-        <div class="col-sm-12 col-md mb-sm-2 mb-0">
-          <div class="text-muted">Bounce Rate</div>
-          <strong>40.15%</strong>
-          <div class="progress progress-xs mt-2">
-            <div class="progress-bar" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
+
+<div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-12">
+         <app-table  [states]=states
+         [districts]=stateDistrictWiseData
+         [zones]=districtZones
+         [summary]="false"
+         
+         >
+         
+         <!-- 
+              [regionHighlighted]="regionHighlighted"
+         [setRegionHighlighted]="setRegionHighlighted"
+         [onHighlightState]="onHighlightState"
+         [onHighlightDistrict]="onHighlightDistrict"
+             -->
+          
+          
+          
+          </app-table>
+          <!-- 
+
+            {stateDistrictWiseData && (
+            <Table
+              states={states}
+              summary={false}
+              districts={stateDistrictWiseData}
+              zones={districtZones}
+              regionHighlighted={regionHighlighted}
+              setRegionHighlighted={setRegionHighlighted}
+              onHighlightState={onHighlightState}
+              onHighlightDistrict={onHighlightDistrict}
+            />
+          )}
+
+
+
+           -->
+          
+        </div>
+      </div>
+    </div>
+  </div> 
+
+
+
+
+
+
+
+
+
+
+
   <!--/.card-->
-  <div class="row">
+  <!-- <div class="row">
     <div class="col-sm-6 col-lg-3">
       <div class="brand-card">
         <div class="brand-card-header bg-facebook">
@@ -196,7 +196,7 @@
           </div>
         </div>
       </div>
-    </div><!--/.col-->
+    </div>
     <div class="col-sm-6 col-lg-3">
       <div class="brand-card">
         <div class="brand-card-header bg-twitter">
@@ -222,7 +222,7 @@
           </div>
         </div>
       </div>
-    </div><!--/.col-->
+    </div>
     <div class="col-sm-6 col-lg-3">
       <div class="brand-card">
         <div class="brand-card-header bg-linkedin">
@@ -248,7 +248,7 @@
           </div>
         </div>
       </div>
-    </div><!--/.col-->
+    </div>
     <div class="col-sm-6 col-lg-3">
       <div class="brand-card">
         <div class="brand-card-header bg-google-plus">
@@ -274,9 +274,9 @@
           </div>
         </div>
       </div>
-    </div><!--/.col-->
-  </div><!--/.row-->
-  <div class="row">
+    </div>
+  </div> -->
+  <!-- <div class="row">
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
@@ -292,15 +292,15 @@
                     <br>
                     <strong class="h4">9,123</strong>
                   </div>
-                </div><!--/.col-->
+                </div>
                 <div class="col-sm-6">
                   <div class="callout callout-danger">
                     <small class="text-muted">Recuring Clients</small>
                     <br>
                     <strong class="h4">22,643</strong>
                   </div>
-                </div><!--/.col-->
-              </div><!--/.row-->
+                </div>
+              </div>
               <hr class="mt-0">
               <div class="progress-group mb-4">
                 <div class="progress-group-prepend">
@@ -407,7 +407,7 @@
                   </div>
                 </div>
               </div>
-            </div><!--/.col-->
+            </div>
             <div class="col-sm-6">
               <div class="row">
                 <div class="col-sm-6">
@@ -416,15 +416,15 @@
                     <br>
                     <strong class="h4">78,623</strong>
                   </div>
-                </div><!--/.col-->
+                </div>
                 <div class="col-sm-6">
                   <div class="callout callout-success">
                     <small class="text-muted">Organic</small>
                     <br>
                     <strong class="h4">49,123</strong>
                   </div>
-                </div><!--/.col-->
-              </div><!--/.row-->
+                </div>
+              </div>
               <hr class="mt-0">
               <div class="progress-group">
                 <div class="progress-group-header">
@@ -502,8 +502,8 @@
                   </div>
                 </div>
               </div>
-            </div><!--/.col-->
-          </div><!--/.row-->
+            </div>
+          </div>
           <br>
           <table class="table table-responsive-sm table-hover table-outline mb-0">
             <thead class="thead-light">
@@ -744,6 +744,6 @@
           </table>
         </div>
       </div>
-    </div><!--/.col-->
-  </div><!--/.row-->
+    </div>
+  </div> -->
 </div>
