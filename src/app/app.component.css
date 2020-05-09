@@ -1,0 +1,9 @@
+.navbar-toggler.d-none.d-md-block{
+    display: none!important;
+
+}
+
+.navbar-toggler.d-lg-none{
+    display: none!important;
+
+}
