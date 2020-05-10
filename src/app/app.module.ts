@@ -44,7 +44,9 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
 import { TableComponent } from './components/table/table.component';
-import { RowComponent } from './components/row/row.component';
+// import { RowComponent } from './components/row/row.component';
+import { DashboardDistrictComponent } from './views/dashboard-district/dashboard-district.component';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   imports: [
@@ -56,6 +58,8 @@ import { RowComponent } from './components/row/row.component';
     AppAsideModule,
     AppBreadcrumbModule.forRoot(),
     AppFooterModule,
+    // DataTablesModule,
+    // DataTablesModule.forRoot(),
     AppHeaderModule,
     AppSidebarModule,
     PerfectScrollbarModule,
@@ -70,8 +74,9 @@ import { RowComponent } from './components/row/row.component';
     P500Component,
     LoginComponent,
     RegisterComponent,
+    // DashboardDistrictComponent,
     // TableComponent,
-    RowComponent
+    // RowComponent
   ],
   providers: [{
     provide: LocationStrategy,

@@ -1,0 +1,31 @@
+<div class="container">
+        <table datatable [dtOptions]="dtOptions" class="row-border hover table2">
+            <thead>
+                <tr>
+                        <!-- <th></th> -->
+                        <th>District</th>
+                        <th>Confirmed</th>
+                        <th>Active</th>
+                        <th>Recovered</th>
+                        <th>Deaths</th>
+                </tr>
+            </thead>
+            <tbody *ngIf="allDistrictData?.length != 0">
+                <tr *ngFor="let district of allDistrictData">
+                    
+                        <td >{{district.name}}</td>
+                        <td >{{district.confirmed}}</td>
+                        <td >{{district.active}}</td>
+                        <td >{{district.recovered}}</td>
+                        <td >{{district.deceased}}</td>
+
+
+                </tr>
+            </tbody>
+            <tbody *ngIf="allDistrictData?.length == 0">
+                <tr>
+                    <td colspan="3" class="no-data-available">No data!</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>

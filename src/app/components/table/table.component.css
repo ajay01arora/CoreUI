@@ -1,0 +1,13 @@
+
+tr td:first-child {
+    cursor: pointer;
+    font-size: 1.2em;
+    color: skyblue;
+    font-weight: 700;
+  }
+  tr td:first-child::before {
+    content: '+';
+  }
+  tr.shown td:first-child::before{
+    content: '-';
+  }

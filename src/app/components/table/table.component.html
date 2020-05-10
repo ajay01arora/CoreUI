@@ -1,95 +1,103 @@
- <p>Table Works</p>
 
 
-<!--
-     <table className="table fadeInUp" >  -->
-         <!--style={{animationDelay: '1.8s'}} -->
-        <!-- <thead>
-          <tr>
-            <th className="state-heading" > -->
-                <!-- onClick={() => handleSort('state')} -->
-              <!-- <div className="heading-content">
-                <abbr title="State">{t('State/UT')}</abbr>
-                <div
-                 
-                > -->
-                <!-- 
-                     style={{
-                    display:
-                      sortData.sortColumn === 'state' ? 'initial' : 'none',
-                  }}
-                 -->
+<div *ngIf="tableLoaded">
+<table datatable [dtOptions]="dtOptions" class="row-border hover table">
 
 
-                  <!-- <div/> -->
+        <thead>
+                <tr>
+                        <th></th>
+                        <th>State/UT</th>
+                        <th>Confirmed</th>
+                        <th>Active</th>
+                        <th>Recovered</th>
+                        <th>Deaths</th>
+                </tr>
+            </thead>
+
+            <tbody *ngIf="states?.length != 0">
+                <tr #trRef *ngFor="let state of states">
+                    <td (click)="expandRow(trRef, state)"></td>
+                    <td >{{state.state}}</td>
+                    <td  >{{state.confirmed}}</td>
+                    <td  >{{state.active}}</td>
+                    <td  >{{state.recovered}}</td>
+                    <td  >{{state.deaths}}</td>
+                </tr>
+            </tbody>
+
+            <tbody *ngIf="states?.length == 0">
+                <tr>
+                    <td colspan="3" class="no-data-available">No data!</td>
+                </tr>
+            </tbody>
 
 
 
-                  <!-- 
- ng-class={classnames(
-                      {'arrow-up': sortData.isAscending},
-                      {'arrow-down': !sortData.isAscending}
-                    )}
-                   -->
-                <!-- </div>
-              </div>
-            </th>
-            {STATE_ROW_STATISTICS.map((statistic, index) => (
-              -->
-             
-             
-                <!-- <StateHeaderCell
-                key={index}
-                handleSort={handleSort}
-                sortData={sortData}
-                statistic={statistic}
-              /> -->
+
+
+
+
+</table>
+</div>
+<div *ngIf="!tableLoaded">
+    Loading
+
+</div>
 
 <!-- 
+<table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th></th>
+                <th>State/UT</th>
+                <th>Confirmed</th>
+                <th>Active</th>
+                <th>Recovered</th>
+                <th>Deaths</th>
+            </tr>
+        </thead>
+        <tbody>
 
-            ))}
-          </tr>
-        </thead> -->
-
-        <!-- {states && (
-          <tbody>
-            {sortedStates.map((state, index) => {
-              if (state.confirmed > 0 && state.statecode !== 'TT') {
-                return (
-                  <Row
-                    key={state.statecode}
-                    state={state}
-                    districts={districts[state.state]?.districtData}
-                    zones={zones[state.state]}
-                    regionHighlighted={
-                      equal(regionHighlighted?.state, state.state)
-                        ? regionHighlighted
-                        : null
-                    }
-                    onHighlightState={onHighlightState}
-                    onHighlightDistrict={onHighlightDistrict}
-                  />
-                );
-              }
-              return null;
-            })}
-          </tbody>
-        )}
-
-        {states && (
-          <tbody>
-            <Row
-              key={0}
-              state={states[0]}
-              onHighlightState={onHighlightState}
-            />
-          </tbody>
-        )}
-      </table> -->
+        </tbody>
+        <tfoot>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Salary</th>
+            </tr>
+        </tfoot>
+    </table> -->
 
 
 
 
-      <!-- {states && FineprintBottom}
-    </React.Fragment> -->
 
+
+
+
+<!-- 
+<table style="width:100%">
+        <tr>
+          <th>State/UT</th>
+          <th *ngFor="let statistic of STATE_ROW_STATISTICS ">{{statistic}}</th> 
+          
+        </tr>
+
+<tr *ngFor="let state of states">
+    <td  >{{state.state}}</td>
+    <td  >{{state.confirmed}}</td>
+    <td  >{{state.active}}</td>
+    <td  >{{state.recovered}}</td>
+    <td  >{{state.deaths}}</td>
+</tr>
+
+</table> -->
+
+<!--
+     <app-row [state]="state" [districts]="districts[state]" [zones]="zones">
+
+</app-row> 
+-->

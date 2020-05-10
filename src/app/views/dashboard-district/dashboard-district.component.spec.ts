@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RowComponent } from './row.component';
+import { DashboardDistrictComponent } from './dashboard-district.component';
 
-describe('RowComponent', () => {
-  let component: RowComponent;
-  let fixture: ComponentFixture<RowComponent>;
+describe('DashboardDistrictComponent', () => {
+  let component: DashboardDistrictComponent;
+  let fixture: ComponentFixture<DashboardDistrictComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RowComponent ]
+      declarations: [ DashboardDistrictComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RowComponent);
+    fixture = TestBed.createComponent(DashboardDistrictComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

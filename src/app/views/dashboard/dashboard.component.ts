@@ -401,14 +401,14 @@ export class DashboardComponent implements OnInit {
   districtZones:any=[]
 
 
-  ngOnInit(): void {
+ async ngOnInit() {
     // generate random values for mainChart
     for (let i = 0; i <= this.mainChartElements; i++) {
       this.mainChartData1.push(this.random(50, 200));
       this.mainChartData2.push(this.random(80, 100));
       this.mainChartData3.push(65);
     }
-    this.getAllData()
+   await this.getAllData()
     this.getDistrictWiseData()
     this.getDistrictZones()
   }
