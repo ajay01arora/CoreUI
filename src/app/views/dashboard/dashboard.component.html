@@ -117,17 +117,12 @@
 <div class="card">
     <div class="card-body">
       <div class="row">
-        <div *ngIf="states.length>0" class="col-md-12">
+        <div *ngIf="states.length>0" class="col-md-12 col-12">
          <app-table  
          [states]="states"
          [districts]="stateDistrictWiseData"
-         [zones]="districtZones"
-         
-         >
-       
-          
-          
-          
+         [zones]="districtZones">
+
           </app-table>
          
           
