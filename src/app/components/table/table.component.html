@@ -18,11 +18,11 @@
             <tbody *ngIf="states?.length != 0">
                 <tr #trRef *ngFor="let state of states">
                     <td (click)="expandRow(trRef, state)"></td>
-                    <td >{{state.state}}</td>
-                    <td  >{{state.confirmed}}</td>
-                    <td  >{{state.active}}</td>
-                    <td  >{{state.recovered}}</td>
-                    <td  >{{state.deaths}}</td>
+                    <td (click)="expandRow(trRef, state)">{{state.state}}</td>
+                    <td  (click)="expandRow(trRef, state)">{{state.confirmed}}</td>
+                    <td (click)="expandRow(trRef, state)" >{{state.active}}</td>
+                    <td (click)="expandRow(trRef, state)" >{{state.recovered}}</td>
+                    <td  (click)="expandRow(trRef, state)">{{state.deaths}}</td>
                 </tr>
             </tbody>
 

@@ -7,7 +7,7 @@
             <i class="icon-location-pin"></i>
           </button>
           <div class="text-value" *ngIf="statewise.length>0" >
-              {{statewise[0].confirmed}}
+              {{allIndiaData.confirmed}}
           </div>
           <div>Confirmed</div>
         </div>
@@ -37,7 +37,7 @@
             </div>
           </div>
           <div class="text-value" *ngIf="statewise.length>0"  >
-              {{statewise[0].active}}
+              {{allIndiaData.active}}
             <!-- 9.823 -->
           </div>
           <div>Active</div>
@@ -68,7 +68,7 @@
           </div>
           <div class="text-value" *ngIf="statewise.length>0">
 
-            {{statewise[0].recovered}}
+            {{allIndiaData.recovered}}
           </div>
           <div>Recovered</div>
         </div>
@@ -97,7 +97,7 @@
             </div>
           </div>
           <div class="text-value" *ngIf="statewise.length>0">
-            {{statewise[0].deaths}}
+            {{allIndiaData.deaths}}
           </div>
           <div>Deceased</div>
         </div>

@@ -399,6 +399,7 @@ export class DashboardComponent implements OnInit {
   states:any=[]
   stateDistrictWiseData:any=[]
   districtZones:any=[]
+  allIndiaData:any={}
 
 
  async ngOnInit() {
@@ -421,6 +422,7 @@ console.log(this.allData)
 this.casesTimeSeries=this.allData.cases_time_series;
 this.statewise=this.allData.statewise;
 this.states=this.statewise;
+this.allIndiaData=this.states[0]
 this.tested=this.allData.tested
   }
   
